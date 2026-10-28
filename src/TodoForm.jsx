@@ -8,13 +8,14 @@ function TodoForm({ onAddTodo }) {
         const todoTitle = event.target.todoTitle.value.trim()
        
         if (todoTitle) {
-            onAddTodo(todoTitle)
-            event.target.todoTitle.value = ''
+            onAddTodo(todoTitle) 
+            event.target.reset()
             inputRef.current.focus()
+        }
     }
    
-}
-return(
+   
+   return(
    <form onSubmit={handleAddTodo}>
    <label htmlFor="todoTitle">Todo</label>
 <input
