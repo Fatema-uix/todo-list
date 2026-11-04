@@ -1,22 +1,46 @@
+import {useState } from 'react'
 import './App.css'
+import TodoForm from './TodoForm.jsx'
+import TodoList from './TodoList.jsx'
 
 function App() {
-    const todoList = [
-  { id: 1, title: "Review React lesson" },
-  { id: 2, title: "Practice JavaScript" },
-  { id: 3, title: "Build Todo List" },
-]
-
-  return (
+   const [todoList, setTodoList] = useState([])
   
+   function addTodo(todoTitle) {
+     const newTodo = {
+       id: Date.now(),
+       title: todoTitle,
+       isCompleted: false
+     };
+     setTodoList(prevTodos => [...prevTodos, newTodo]);
+   }
+
+function completeTodo(id) {
+  const updatedTodos = todoList.map(todo => {
+    if (todo.id === id) {
+      return { ...todo, isCompleted: true };
+    }
+    return todo;
+  });
+  setTodoList(updatedTodos);
+}
+   return (
+
         <div>
-          <h1>Todo List</h1>
-          <ul>
-  {todoList.map(todo => <li key={todo.id}>{todo.title}</li>)}
-</ul>
+          <h1> Todo List </h1>
+          <TodoForm 
+           onAddTodo={addTodo} />
+
+           <TodoList 
+            todoList={todoList}
+            onCompleteTodo={completeTodo}
+           />
+      
         </div>
     
   )
+
+
 }
 
 export default App
