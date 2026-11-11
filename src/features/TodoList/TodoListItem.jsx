@@ -1,17 +1,31 @@
+import { useState } from 'react';
+import TextInputWithLabel from '../../shared/TextInputWithLabel.jsx';
 function TodoListItem({ todo, onCompleteTodo }) {
-    return (
-        <li>
-           <input 
-               type="checkbox"
-checked={todo.isCompleted}
-               onChange={() => onCompleteTodo(todo.id)}
-           />  
-           
-             {todo.title}
+  const [isEditing, setIsEditing] = useState(false);
+  return (
+  <li>
+    <form>
+      {isEditing ? (
+        <TextInputWithLabel value={todo.title} />
+      ) : (
+        <>
+          <label>
+            <input
+              type="checkbox"
+              checked={todo.isCompleted}
+              onChange={() => onCompleteTodo(todo.id)}
+            />
+          </label>
+          <span onClick={() => setIsEditing(true)}>
+            {todo.title}
+          </span>
+        </>
+      )}
+    </form>
+  </li>
+);
 
-        </li>
-
-    )
+    
 }
 
 export default TodoListItem
