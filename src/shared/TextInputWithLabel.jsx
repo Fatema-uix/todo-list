@@ -4,7 +4,6 @@ labelText,
 value,
 onChange,
 ref,
-value,
 }) {
 return (
   <>
