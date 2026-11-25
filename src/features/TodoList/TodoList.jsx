@@ -21,3 +21,23 @@ function TodoList({ todoList, onCompleteTodo, onUpdateTodo}) {
         ))
 }
 export default TodoList
+function TodoList({ todoList }) {
+
+   
+
+    return ( 
+        <>
+          <ul>
+            {todoList.map(todo => { 
+              return ( 
+                <TodoListItem 
+                key={todo.id} 
+                todo={todo} />
+              );
+            })}
+          </ul>
+        </>
+    );
+}
+
+export default TodoList;

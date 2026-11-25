@@ -5,6 +5,7 @@ import TodosPage from './features/Todos/TodosPage.jsx';
 import Logon from './features/Logon.jsx';
 
 function App() {
+
   const [email, setEmail] = useState('');
   const [token, setToken] = useState('');
 
@@ -21,9 +22,8 @@ function App() {
       ) : (
         <Logon onSetEmail={setEmail} onSetToken={setToken} />
       )}
-      
         </div>
-    
+   
   )
 
 
